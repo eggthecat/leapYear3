@@ -1,8 +1,6 @@
 // business logic
-var leapYear = function(year) {
-  if (year % 100 === 0){
-    return false;
-  } else if (year % 4 === 0) {
+var leapYear = function(inputYear) {
+  if ((inputYear % 4 === 0) && (inputYear % 100 ==! 0) || (inputYear % 400 === 0)) {
     return true;
   } else {
     return false;
@@ -15,7 +13,16 @@ $(document).ready(function() {
   $("form#formOne").submit(function(event){
     event.preventDefault();
     var inputYear = parseInt($("input#year").val());
-    var result  = leapYear(year);
+    var result  = leapYear(inputYear);
+
+    $(".year").text(year);
+
+    if(!result) {
+      $(".not").text("not")
+    } else {
+      $(".not").text("")
+    }
+
       $("#result").text(result);
   });
 });
