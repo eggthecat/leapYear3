@@ -1,15 +1,20 @@
-$(document).ready(function() {
-  $("form#leapYear").submit(function(event) {
+// bl
+var leapYear = function(year) {
+  if (year %4===0 && year%400===0) {
+    return true
+  } else {
+    return false;
+  };
+};
+
+// uil
+$(document).ready(function(){
+  $("form#formOne").submit(function(event){
     event.preventDefault();
-
-    var inputYear = parseInt($("#year").val());
-    var outputYear = leapYear(year); //(year) is a submit listener
-
-    var leapYear = function(year) {
-      // inputYear === /4 && inputYear ==! /100 && inputYear === /400
-      return false;
-    };
-
-    $("#result").text(outputYear);
+    var inputYear = parseInt($("input#year").val());
+    console.log(inputYear);
+    var result  = leapYear(year);
+    console.log(result);
+      $("#result").text(result);
   });
 });
